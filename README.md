@@ -4,11 +4,11 @@ Calculadora web com tema do Grêmio Foot-Ball Porto Alegrense, construída ponta
 
 ## ✨ Demonstração
 A calculadora está hospedada via GitHub Pages. Acesse pelo link:
-👉 **[https://henriquefreitas-stark.github.io/calculadora-gremio/](https://henriquefreitas-stark.github.io/calculadora-gremio/)**
+👉 **[https://henriquefreitas-stark.github.io/calculadora-gremio/calculadora/](https://henriquefreitas-stark.github.io/calculadora-gremio/calculadora/)**
 
 Como alternativa, você pode abrir localmente:
 `
-index.html
+calculadora/index.html
 `
 
 ## 🏗️ Tecnologias
@@ -19,8 +19,9 @@ index.html
 ## 📁 Estrutura do Projeto
 `	ext
 calculadora-gremio/
-├── index.html                  ← UI, estilos e lógica da calculadora em arquivo único
-├── gremio-logo.png             ← Logo oficial da equipe
+├── calculadora/
+│   ├── index.html              ← UI, estilos e lógica da calculadora em arquivo único
+│   └── gremio-logo.png         ← Logo oficial da equipe
 └── docs/
     ├── project-brief.md        ← Visão estratégica
     ├── prd.md                  ← Product Requirements Document e Epics

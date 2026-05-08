@@ -1,0 +1,74 @@
+handoff:
+  from_agent: dev
+  to_agent: qa
+  timestamp: 2026-05-08T00:00:00Z
+  consumed: false
+  last_command: develop
+
+  story_context:
+    story_id: "1.1"
+    story_path: docs/stories/1.1.estrutura-html-identidade-gremio.md
+    story_status: Ready for Review
+    current_task: qa-gate
+    branch: greenfield-no-git
+
+  source_documents:
+    - path: docs/project-brief.md
+      version: 1.1
+    - path: docs/prd.md
+      version: 1.0
+
+  implementation_summary:
+    files_created:
+      - index.html (raiz, 8404 bytes)
+    files_existing_used:
+      - gremio-logo.png (raiz, 11285 bytes)
+    files_updated:
+      - docs/stories/1.1.estrutura-html-identidade-gremio.md
+    architecture_decision: "Single-file approach — HTML+CSS inline em index.html (sem style.css separado)"
+    listras_location: "body background com linear-gradient(90deg) — 3 bandas verticais azul/preto/azul, background-attachment fixed"
+    button_count: 17 (10 dígitos + 4 operadores + vírgula + igual + clear)
+    button_layout: "4×5 grid; linha 5 com '0' em span 4"
+
+  ac_self_validation:
+    AC1.1.1_file_exists_no_console_errors: PASS_static
+    AC1.1.2_logo_centered_full_width: PASS
+    AC1.1.3_listras_vertical_azul_preto_azul: PASS
+    AC1.1.4_paleta_dominante_no_neutral_bg: PASS
+    AC1.1.5_all_buttons_display: PASS (17 botões + display)
+    AC1.1.6_responsive_320_1024: PASS_static (media queries 600px e 1024px; touch-target ≥56px)
+    AC1.1.7_sans_serif_medium_bold: PASS
+    AC1.1.8_no_external_resources: PASS (zero <link>, zero @import, zero <script src=...>)
+
+  qa_validation_needed:
+    - "Cross-browser real test em Chrome / Edge / Firefox (últimas 3 versões) — @dev não conseguiu executar (sandbox sem browser)"
+    - "Visual inspection final — listras visíveis? logo nítida? paleta dominante? sem fundo neutro?"
+    - "Console limpo (zero Uncaught/404/CORS) ao abrir via duplo-clique"
+    - "Network tab: zero requisições para domínios externos (apenas file://gremio-logo.png)"
+    - "Responsivo manual em DevTools nas larguras 320 / 768 / 1024+"
+
+  dod_self_assessment:
+    requirements_met: PASS (FRs in scope: FR1-FR3, FR5-FR7; FR4/FR8 are Story 1.2)
+    coding_standards: PASS (HTML5 valid, CSS organized with comments, accessibility básica)
+    testing: "N/A per story — manual only"
+    functionality_verification: PARTIAL (estática feita; cross-browser real é responsabilidade @qa)
+    story_admin: PASS (all tasks [x], notes documented, changelog updated)
+    deps_build_config: PASS (zero deps, sem build, NFR1 cumprido)
+    documentation: PASS (comentários inline; PRD/Brief já existem)
+
+  decisions:
+    - "Arquivo único: HTML+CSS inline em vez de style.css separado (Brief Section 1, simplifica NFR2)"
+    - "Listras no body (não no container) para máxima visibilidade — escolha entre 3 opções permitidas pela story"
+    - "17 botões em vez de '18 mínimos' mencionado pela story Task 4 (a soma real de AC1.1.5 é 17)"
+    - "Acessibilidade básica adicionada (aria-label, role, alt) sem comprometer escopo MVP"
+    - "Footer 'Imortal Tricolor' adicionado como bonus de identidade — pode ser removido se @qa julgar fora de escopo"
+
+  blockers: []
+
+  next_action: "@qa *qa-gate 1.1 — executar gate manual com cross-browser, responsive, visual inspection"
+
+  notes:
+    - "Para abrir no browser: duplo-clique em index.html no Windows Explorer OU arrastar para janela do Chrome/Edge/Firefox"
+    - "Caminho absoluto: C:\\Users\\Henrique\\Downloads\\TI\\2 Claude\\calculadora\\index.html"
+    - "Story 1.2 (lógica JS) está pronta para começar logo após @qa aprovar 1.1 — todos os data-* attributes já estão no markup"
+    - "CodeRabbit não executado (chave coderabbit_integration ausente em core-config.yaml — manual review only)"
